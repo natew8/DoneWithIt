@@ -16,13 +16,10 @@ import Icon from "./app/components/Icon";
 // import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import ListItem from "./app/components/ListItem";
+import MyAccountScreen from "./app/screens/MyAccountScreen";
 
 export default function App() {
   const { landscape } = useDeviceOrientation();
 
-  return (
-    <Screen>
-      <ListItem title="My title" ImageComponent={<Icon name="email" />} />
-    </Screen>
-  );
+  return <MyAccountScreen />;
 }
