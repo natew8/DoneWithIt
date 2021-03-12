@@ -31,10 +31,10 @@ function MessagesScreen(props) {
 
   return (
     <Screen>
-      <FlatList
-        data={messages}
-        keyExtractor={(messages) => messages.id.toString()}
-        renderItem={({ item }) => (
+      <FlatList //This is the main list building component for applications. iT takes multiple props including refresh
+        data={messages} //The data inside the list. Will come from the backend
+        keyExtractor={(messages) => messages.id.toString()}//This extracts the key index from the data
+        renderItem={({ item }) => ( //this renders the objects from the data /*Best to use a seperate reusable component
           <ListItem
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
@@ -45,8 +45,8 @@ function MessagesScreen(props) {
             image={item.image}
           />
         )}
-        ItemSeparatorComponent={ListItemSeparator}
-        refreshing={refreshing}
+        ItemSeparatorComponent={ListItemSeparator} //Optional dividing line between list items
+        refreshing={refreshing} //The refreshing prop
         onRefresh={() => {
           setMessages([
             {

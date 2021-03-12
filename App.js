@@ -3,6 +3,8 @@ import {
   useDimensions,
 } from "@react-native-community/hooks";
 import React from "react";
+import Screen from "./app/components/Screen";
+import Icon from "./app/components/Icon";
 // import { View } from "react-native";
 // import ViewImageScreen from "./app/screens/ViewImageScreen";
 // import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -17,5 +19,9 @@ import MessagesScreen from "./app/screens/MessagesScreen";
 export default function App() {
   const { landscape } = useDeviceOrientation();
 
-  return <MessagesScreen />;
+  return (
+    <Screen>
+      <Icon name="email" size={50} backgroundColor="red" iconColor="white" />
+    </Screen>
+  );
 }
