@@ -17,9 +17,10 @@ import Icon from "./app/components/Icon";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import ListItem from "./app/components/ListItem";
 import MyAccountScreen from "./app/screens/MyAccountScreen";
+import ListingsScreen from "./app/screens/ListingsScreen";
 
 export default function App() {
   const { landscape } = useDeviceOrientation();
 
-  return <MyAccountScreen />;
+  return <ListingsScreen />;
 }
