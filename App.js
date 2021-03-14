@@ -18,16 +18,15 @@ import MessagesScreen from "./app/screens/MessagesScreen";
 import ListItem from "./app/components/ListItem";
 import MyAccountScreen from "./app/screens/MyAccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
-import { Text, TextInput } from "react-native";
+import { Switch, Text, TextInput } from "react-native";
 import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
-  const { landscape } = useDeviceOrientation();
-  const [firstName, setFirstName] = useState("");
+  const [isNew, setIsNew] = useState(false);
 
   return (
     <Screen>
-      <AppTextInput icon="email" placeholder="Username" />
+      <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
     </Screen>
   );
 }
