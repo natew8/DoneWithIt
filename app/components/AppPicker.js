@@ -19,17 +19,17 @@ function AppPicker({
   icon,
   items,
   placeholder,
+  PickerItemComponent = PickerItem,
   onSelectItem,
   selectedItem,
-  style,
-  ...otherProps
+  width = "100%",
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={[styles.container, style]}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -58,15 +58,12 @@ function AppPicker({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
                   onSelectItem(item);
                 }}
-                name={item.icon}
-                backgroundColor={item.backgroundColor}
-                size={80}
               />
             )}
           />
@@ -80,7 +77,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.Colors.light,
     borderRadius: 20,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },

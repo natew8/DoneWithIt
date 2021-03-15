@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 
 import {
   AppForm,
@@ -89,14 +90,15 @@ function ListingEditScreen() {
       >
         <AppFormField maxLength={255} name="title" placeholder="Title" />
         <AppFormField
-          style={styles.price}
+          width={120}
           keyboardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
         />
         <AppFormPicker
-          style={styles.category}
+          PickerItemComponent={CategoryPickerItem}
+          width="50%"
           items={categories}
           name="Category"
           placeholder="Category"
@@ -116,12 +118,6 @@ function ListingEditScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-  },
-  category: {
-    width: 200,
-  },
-  price: {
-    width: 130,
   },
 });
 export default ListingEditScreen;
