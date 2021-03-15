@@ -32,7 +32,7 @@ function MessagesScreen(props) {
   };
 
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <FlatList //This is the main list building component for applications. iT takes multiple props including refresh
         data={messages} //The data inside the list. Will come from the backend
         keyExtractor={(messages) => messages.id.toString()} //This extracts the key index from the data
@@ -66,5 +66,9 @@ function MessagesScreen(props) {
     </Screen>
   );
 }
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 export default MessagesScreen;
