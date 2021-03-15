@@ -3,7 +3,9 @@ import {
   useDimensions,
 } from "@react-native-community/hooks";
 import React, { useEffect, useState } from "react";
+import { Button, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 // import ListItem from "./app/components/ListItem";
 import Screen from "./app/components/Screen";
 // import Icon from "./app/components/Icon";
@@ -28,12 +30,27 @@ import Screen from "./app/components/Screen";
 // import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
+  const [imageUri, setImageUri] = useState();
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!granted) alert("You need to enable permission to access your photos.");
   };
-  useEffect(async () => {
+  useEffect(() => {
     requestPermission();
   }, []);
-  return <Screen></Screen>;
+
+  const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.cancelled) setImageUri(result.uri);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <Screen>
+      <Button title="select image" onPress={selectImage} />
+      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+    </Screen>
+  );
 }
