@@ -5,11 +5,12 @@ import { useFormikContext } from "formik";
 import AppPicker from "../AppPicker";
 import ErrorMessage from "./ErrorMessage";
 
-function AppFormPicker({ items, name, placeholder }) {
+function AppFormPicker({ items, name, placeholder, style }) {
   const { errors, touched, setFieldValue, values } = useFormikContext();
   return (
     <>
       <AppPicker
+        style={style}
         items={items}
         onSelectItem={(item) => setFieldValue(name, item)}
         placeholder={placeholder}

@@ -21,14 +21,56 @@ const categories = [
   {
     label: "Furniture",
     value: 1,
+    icon: "floor-lamp",
+    backgroundColor: "#fc5c65",
   },
   {
     label: "Clothing",
     value: 2,
+    icon: "shoe-heel",
+    backgroundColor: "#2bcbba",
   },
   {
-    label: "Camera",
+    label: "Cameras",
     value: 3,
+    icon: "camera",
+    backgroundColor: "#fed330",
+  },
+  {
+    label: "Cars",
+    value: 4,
+    icon: "car",
+    backgroundColor: "#fd9644",
+  },
+  {
+    label: "Games",
+    value: 5,
+    icon: "cards",
+    backgroundColor: "#26de81",
+  },
+  {
+    label: "Sports",
+    value: 6,
+    icon: "basketball",
+    backgroundColor: "#45aaf2",
+  },
+  {
+    label: "Movies & Music",
+    value: 7,
+    icon: "headphones",
+    backgroundColor: "#4b7bec",
+  },
+  {
+    label: "Books",
+    value: 8,
+    icon: "bookshelf",
+    backgroundColor: "#9b67e3",
+  },
+  {
+    label: "Other",
+    value: 9,
+    icon: "all-inclusive",
+    backgroundColor: "#7c8ba0",
   },
 ];
 
@@ -47,12 +89,14 @@ function ListingEditScreen() {
       >
         <AppFormField maxLength={255} name="title" placeholder="Title" />
         <AppFormField
+          style={styles.price}
           keyboardType="numeric"
           maxLength={8}
           name="price"
           placeholder="Price"
         />
         <AppFormPicker
+          style={styles.category}
           items={categories}
           name="Category"
           placeholder="Category"
@@ -72,6 +116,12 @@ function ListingEditScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  category: {
+    width: 200,
+  },
+  price: {
+    width: 130,
   },
 });
 export default ListingEditScreen;
