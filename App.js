@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Screen from "./app/components/Screen";
 import Icon from "./app/components/Icon";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 // import { View } from "react-native";
 // import ViewImageScreen from "./app/screens/ViewImageScreen";
 // import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -24,5 +25,5 @@ import LoginScreen from "./app/screens/LoginScreen";
 // import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
-  return <LoginScreen />;
+  return <RegisterScreen />;
 }
