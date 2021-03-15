@@ -8,8 +8,10 @@ import Screen from "../components/Screen";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et tincidunt tellus. Pellentesque id efficitur mauris. Fusce magna eros, molestie eget ipsum non, dictum mattis ante. In laoreet placerat mollis. Maecenas eu odio risus. Fusce tortor lectus, blandit eu facilisis vel, aliquam sed quam. Praesent congue lacus efficitur nisl sodales fermentum. Aliquam erat volutpat. Sed ut dui lobortis, consequat quam vel, efficitur ligula. ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et tincidunt tellus. Pellentesque id efficitur mauris. Fusce magna eros, molestie eget ipsum non, dictum mattis ante. In laoreet placerat mollis. Maecenas eu odio risus. Fusce tortor lectus, blandit eu facilisis vel, aliquam sed quam. Praesent congue lacus efficitur nisl sodales fermentum. Aliquam erat volutpat. Sed ut dui lobortis, consequat quam vel, efficitur ligula. ",
     image: require("../assets/mosh.jpg"),
   },
   {
@@ -33,8 +35,10 @@ function MessagesScreen(props) {
     <Screen>
       <FlatList //This is the main list building component for applications. iT takes multiple props including refresh
         data={messages} //The data inside the list. Will come from the backend
-        keyExtractor={(messages) => messages.id.toString()}//This extracts the key index from the data
-        renderItem={({ item }) => ( //this renders the objects from the data /*Best to use a seperate reusable component
+        keyExtractor={(messages) => messages.id.toString()} //This extracts the key index from the data
+        renderItem={(
+          { item } //this renders the objects from the data /*Best to use a seperate reusable component
+        ) => (
           <ListItem
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
@@ -43,6 +47,7 @@ function MessagesScreen(props) {
             title={item.title}
             subTitle={item.description}
             image={item.image}
+            showChevrons
           />
         )}
         ItemSeparatorComponent={ListItemSeparator} //Optional dividing line between list items

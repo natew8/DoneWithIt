@@ -3,6 +3,7 @@ import {
   useDimensions,
 } from "@react-native-community/hooks";
 import React, { useState } from "react";
+import ListItem from "./app/components/ListItem";
 // import Screen from "./app/components/Screen";
 // import Icon from "./app/components/Icon";
 // import LoginScreen from "./app/screens/LoginScreen";
@@ -17,7 +18,7 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 // import AppText from "./app/components/AppText/AppText";
 // import Card from "./app/components/Card";
 // import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
-// import MessagesScreen from "./app/screens/MessagesScreen";
+import MessagesScreen from "./app/screens/MessagesScreen";
 // import ListItem from "./app/components/ListItem";
 // import MyAccountScreen from "./app/screens/MyAccountScreen";
 // import ListingsScreen from "./app/screens/ListingsScreen";
@@ -26,5 +27,5 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 // import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
-  return <ListingEditScreen />;
+  return <MessagesScreen />;
 }
