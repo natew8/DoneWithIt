@@ -97,6 +97,7 @@ function ListingEditScreen() {
           placeholder="Price"
         />
         <AppFormPicker
+          numberOfColumns={3}
           PickerItemComponent={CategoryPickerItem}
           width="50%"
           items={categories}

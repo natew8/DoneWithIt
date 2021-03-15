@@ -11,11 +11,13 @@ function AppFormPicker({
   placeholder,
   PickerItemComponent,
   width,
+  numberOfColumns,
 }) {
   const { errors, touched, setFieldValue, values } = useFormikContext();
   return (
     <>
       <AppPicker
+        numberOfColumns={numberOfColumns}
         PickerItemComponent={PickerItemComponent}
         width={width}
         items={items}

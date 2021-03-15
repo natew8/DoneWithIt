@@ -5,18 +5,11 @@ import { TouchableOpacity, StyleSheet, View } from "react-native";
 import Icon from "./Icon";
 import AppText from "./AppText";
 
-function PickerItem({
-  label,
-  onPress,
-  name,
-  size,
-  iconColor,
-  backgroundColor,
-}) {
+function PickerItem({ onPress, item }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View>
-        <AppText style={styles.text}>{label}</AppText>
+        <AppText style={styles.text}>{item.label}</AppText>
       </View>
     </TouchableOpacity>
   );
