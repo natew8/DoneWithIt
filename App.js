@@ -20,13 +20,15 @@ import MyAccountScreen from "./app/screens/MyAccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import { Switch, Text, TextInput } from "react-native";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
   const [isNew, setIsNew] = useState(false);
 
   return (
     <Screen>
-      <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
+      <AppPicker icon="apps" placeholder="Category" />
+      <AppTextInput name="email" placeholder="email" />
     </Screen>
   );
 }
