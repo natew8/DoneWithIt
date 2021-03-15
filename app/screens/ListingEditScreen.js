@@ -66,37 +66,6 @@ function ListingEditScreen() {
         />
         <SubmitButton title="Post" />
       </AppForm>
-      {/* <AppForm
-        initialValues={{
-          title: "",
-          price: "",
-          description: "",
-          category: null,
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
-          keyboardType="numeric"
-          maxLength={8}
-          name="price"
-          placeholder="Price"
-        />
-        <AppFormPicker
-          items={categories}
-          name="Category"
-          placeholder="Category"
-        />
-        <AppFormField
-          maxLength={255}
-          multiline
-          name="Description"
-          numberOfLines={3}
-          placeholder="Description"
-        />
-        <SubmitButton title="Post" />
-      </AppForm> */}
     </Screen>
   );
 }
