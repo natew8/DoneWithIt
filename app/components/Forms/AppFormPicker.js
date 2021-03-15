@@ -14,7 +14,6 @@ function AppFormPicker({ items, name, placeholder }) {
         onSelectItem={(item) => setFieldValue(name, item)}
         placeholder={placeholder}
         selectedItem={values[name]}
-        {...otherProps}
       />
       <ErrorMessage visible={touched[name]} error={errors[name]} />
     </>

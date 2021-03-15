@@ -3,10 +3,10 @@ import {
   useDimensions,
 } from "@react-native-community/hooks";
 import React, { useState } from "react";
-import Screen from "./app/components/Screen";
-import Icon from "./app/components/Icon";
-import LoginScreen from "./app/screens/LoginScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
+// import Screen from "./app/components/Screen";
+// import Icon from "./app/components/Icon";
+// import LoginScreen from "./app/screens/LoginScreen";
+// import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 // import { View } from "react-native";
 // import ViewImageScreen from "./app/screens/ViewImageScreen";

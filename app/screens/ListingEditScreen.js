@@ -5,9 +5,9 @@ import * as Yup from "yup";
 import {
   AppForm,
   AppFormField,
-  AppFormPicker,
   SubmitButton,
-} from "../components/Forms";
+  AppFormPicker,
+} from "../components/Forms/index";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
@@ -30,16 +30,43 @@ const categories = [
     label: "Camera",
     value: 3,
   },
-  {
-    label: "Instrument",
-    value: 4,
-  },
 ];
 
-function ListingEditScreen(props) {
+function ListingEditScreen() {
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <AppForm
+        initialValues={{
+          title: "",
+          price: "",
+          description: "",
+          category: null,
+        }}
+        onSubmit={(value) => console.log(value)}
+        validationSchema={validationSchema}
+      >
+        <AppFormField maxLength={255} name="title" placeholder="Title" />
+        <AppFormField
+          keyboardType="numeric"
+          maxLength={8}
+          name="price"
+          placeholder="Price"
+        />
+        <AppFormPicker
+          items={categories}
+          name="Category"
+          placeholder="Category"
+        />
+        <AppFormField
+          maxLength={255}
+          multiline
+          name="Description"
+          numberOfLines={3}
+          placeholder="Description"
+        />
+        <SubmitButton title="Post" />
+      </AppForm>
+      {/* <AppForm
         initialValues={{
           title: "",
           price: "",
@@ -68,9 +95,14 @@ function ListingEditScreen(props) {
           numberOfLines={3}
           placeholder="Description"
         />
-      </AppForm>
+        <SubmitButton title="Post" />
+      </AppForm> */}
     </Screen>
   );
 }
-
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
 export default ListingEditScreen;
