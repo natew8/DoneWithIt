@@ -7,6 +7,7 @@ import Screen from "./app/components/Screen";
 import Icon from "./app/components/Icon";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 // import { View } from "react-native";
 // import ViewImageScreen from "./app/screens/ViewImageScreen";
 // import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -25,5 +26,5 @@ import RegisterScreen from "./app/screens/RegisterScreen";
 // import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
-  return <RegisterScreen />;
+  return <ListingEditScreen />;
 }

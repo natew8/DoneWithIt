@@ -4,9 +4,12 @@ import * as Yup from "yup";
 //Components
 import Screen from "../components/Screen";
 import { AppForm, AppFormField, SubmitButton } from "../components/Forms/index";
-
+//
+//
+//
+//Yup is used to validate form info. Very popular and works with Formik
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
+  name: Yup.string().required().min(4).label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
