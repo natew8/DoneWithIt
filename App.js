@@ -51,6 +51,16 @@ const Account = () => (
     <Text>Account</Text>
   </Screen>
 );
+const Profile = () => (
+  <Screen>
+    <Text>Profile</Text>
+  </Screen>
+);
+const Settings = () => (
+  <Screen>
+    <Text>Settings</Text>
+  </Screen>
+);
 
 const Tab = createBottomTabNavigator();
 
@@ -58,6 +68,8 @@ const TabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen name="Feed" component={Tweets} />
     <Tab.Screen name="Account" component={Account} />
+    <Tab.Screen name="Profile" component={Profile} />
+    <Tab.Screen name="Settings" component={Settings} />
   </Tab.Navigator>
 );
 
