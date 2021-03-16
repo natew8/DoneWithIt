@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import FormImagePicker from "../components/Forms/FormImagePicker";
 
 import {
   AppForm,
@@ -12,6 +13,7 @@ import {
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
+  images: Yup.array().min(1, "Please select at least one image."),
   title: Yup.string().required().min(1).min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
@@ -84,10 +86,12 @@ function ListingEditScreen() {
           price: "",
           description: "",
           category: null,
+          images: [],
         }}
         onSubmit={(value) => console.log(value)}
         validationSchema={validationSchema}
       >
+        <FormImagePicker name="images" />
         <AppFormField maxLength={255} name="title" placeholder="Title" />
         <AppFormField
           width={120}
