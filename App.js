@@ -8,6 +8,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 // import ListItem from "./app/components/ListItem";
 import Screen from "./app/components/Screen";
+import ImageInput from "./app/components/ImageInput";
 // import Icon from "./app/components/Icon";
 // import LoginScreen from "./app/screens/LoginScreen";
 // import RegisterScreen from "./app/screens/RegisterScreen";
@@ -51,6 +52,7 @@ export default function App() {
     <Screen>
       <Button title="select image" onPress={selectImage} />
       <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      <ImageInput imageUri={imageUri} />
     </Screen>
   );
 }
