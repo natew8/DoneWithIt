@@ -2,7 +2,6 @@ import React from "react";
 import { TouchableOpacity, StyleSheet, View } from "react-native";
 
 //Components
-import Icon from "./Icon";
 import AppText from "./AppText";
 
 function PickerItem({ onPress, item }) {

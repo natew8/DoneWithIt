@@ -20,7 +20,7 @@ function AppPicker({
   items,
   numberOfColumns = 1,
   placeholder,
-  PickerItemComponent = PickerItem,
+  PickerItemComponent,
   onSelectItem,
   selectedItem,
   width = "100%",
