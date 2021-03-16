@@ -9,10 +9,7 @@ const Link = () => {
   const navigation = useNavigation();
 
   return (
-    <Button
-      title="Click"
-      onPress={() => navigation.navigate("Tweet Details")}
-    />
+    <Button title="Click" onPress={() => navigation.navigate("TweetDetails")} />
   );
 };
 
@@ -21,7 +18,7 @@ const Tweets = ({ navigation }) => (
     <Text>Tweets</Text>
     <Button
       title="View tweet"
-      onPress={() => navigation.navigate("Tweet Details", { id: 1 })}
+      onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
     />
   </Screen>
 );
@@ -33,9 +30,18 @@ const TweetDetails = ({ route }) => (
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    screenOptions={{
+      headerStyle: { backgroundColor: "black" },
+      headerTintColor: "white",
+    }}
+  >
     <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="Tweet Details" component={TweetDetails} />
+    <Stack.Screen
+      options={({ route }) => ({ title: route.params.id })}
+      name="TweetDetails"
+      component={TweetDetails}
+    />
   </Stack.Navigator>
 );
 
