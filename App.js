@@ -9,6 +9,7 @@ import * as Permissions from "expo-permissions";
 // import ListItem from "./app/components/ListItem";
 import Screen from "./app/components/Screen";
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 // import Icon from "./app/components/Icon";
 // import LoginScreen from "./app/screens/LoginScreen";
 // import RegisterScreen from "./app/screens/RegisterScreen";
@@ -31,13 +32,20 @@ import ImageInput from "./app/components/ImageInput";
 // import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
 
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
+  };
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+  };
   return (
     <Screen>
-      <ImageInput
-        onChangeImage={(uri) => setImageUri(uri)}
-        imageUri={imageUri}
+      <ImageInputList
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
+        imageUris={imageUris}
       />
     </Screen>
   );
