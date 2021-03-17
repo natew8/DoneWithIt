@@ -3,6 +3,7 @@ import { FlatList, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import Colors from "../config/Colors";
+
 const listings = [
   {
     id: 1,
@@ -17,7 +18,7 @@ const listings = [
     image: require("../assets/couch.jpg"),
   },
 ];
-function ListingsScreen(props) {
+function ListingsScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -25,6 +26,7 @@ function ListingsScreen(props) {
         keyExtractor={(listing) => listing.id.toString()} //keyExtractor expects a string as the unique identifier so a int must be converted to a string.
         renderItem={({ item }) => (
           <Card
+            onPress={() => navigation.navigate("ListingDetails", item)}
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
