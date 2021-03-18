@@ -1,27 +1,36 @@
-import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Button, FlatList, StyleSheet } from "react-native";
 //Components//
+import AppButton from "../components/AppButton";
 import routes from "../Navigation/routes";
 import Screen from "../components/Screen";
+import Colors from "../config/Colors";
 import listingsApi from "../api/listings";
 import Card from "../components/Card";
-import Colors from "../config/Colors";
-import { useState } from "react";
-import { useEffect } from "react";
+import AppText from "../components/AppText";
 
 function ListingsScreen({ navigation }) {
   const [listings, setListings] = useState();
+  const [error, setError] = useState(false);
   useEffect(() => {
     loadListings();
   }, []);
 
   const loadListings = async () => {
     const response = await listingsApi.getListings();
+    if (!response.ok) return setError(true);
     setListings(response.data);
+    setError(false);
   };
 
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <AppText>Couldn't retrieve the listings</AppText>
+          <AppButton title="Retry" onPress={loadListings} />
+        </>
+      )}
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()} //keyExtractor expects a string as the unique identifier so a int must be converted to a string.
