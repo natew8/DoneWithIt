@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, FlatList, StyleSheet } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
 //Components//
 import AppButton from "../components/AppButton";
 import routes from "../Navigation/routes";
@@ -12,13 +12,18 @@ import AppText from "../components/AppText";
 function ListingsScreen({ navigation }) {
   const [listings, setListings] = useState();
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     loadListings();
   }, []);
 
   const loadListings = async () => {
+    setLoading(true);
     const response = await listingsApi.getListings();
+    setLoading(false);
+
     if (!response.ok) return setError(true);
+
     setListings(response.data);
     setError(false);
   };
@@ -31,6 +36,7 @@ function ListingsScreen({ navigation }) {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
+      <ActivityIndicator animating={true} size="large" />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()} //keyExtractor expects a string as the unique identifier so a int must be converted to a string.
