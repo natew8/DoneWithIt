@@ -7,14 +7,10 @@ import ListingsScreen from "../screens/ListingsScreen";
 const Stack = createStackNavigator();
 
 const FeedNavigator = () => (
-  <Stack.Navigator mode="modal">
+  <Stack.Navigator screenOptions={{ headerShown: false }} mode="modal">
     {/* mode will change whether the new page comes in from the side (card) or the bottom (modal)*/}
     <Stack.Screen name="Listings" component={ListingsScreen} />
-    <Stack.Screen
-      options={{ headerShown: false }}
-      name="ListingDetails"
-      component={ListingDetailsScreen}
-    />
+    <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} />
   </Stack.Navigator>
 );
 
