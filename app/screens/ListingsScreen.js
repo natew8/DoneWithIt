@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 //Components//
 import AppButton from "../components/AppButton";
 import routes from "../Navigation/routes";
@@ -8,6 +8,7 @@ import Colors from "../config/Colors";
 import listingsApi from "../api/listings";
 import Card from "../components/Card";
 import AppText from "../components/AppText";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 function ListingsScreen({ navigation }) {
   const [listings, setListings] = useState();
@@ -36,7 +37,7 @@ function ListingsScreen({ navigation }) {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
-      <ActivityIndicator animating={true} size="large" />
+      <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()} //keyExtractor expects a string as the unique identifier so a int must be converted to a string.
