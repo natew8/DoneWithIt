@@ -9,6 +9,7 @@ import {
 } from "react-native";
 //Components
 import AppButton from "../components/AppButton";
+import routes from "../Navigation/routes";
 
 function WelcomeScreen({ navigation }) {
   return (
@@ -22,9 +23,12 @@ function WelcomeScreen({ navigation }) {
         <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton onPress={() => navigation.navigate("Login")} title="Login" />
         <AppButton
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate(routes.LOGIN)}
+          title="Login"
+        />
+        <AppButton
+          onPress={() => navigation.navigate(routes.REGISTER)}
           title="Register"
           color="secondary"
         />

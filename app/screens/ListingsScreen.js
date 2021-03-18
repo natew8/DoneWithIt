@@ -1,5 +1,7 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
+//Components//
+import routes from "../Navigation/routes";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import Colors from "../config/Colors";
@@ -26,7 +28,7 @@ function ListingsScreen({ navigation }) {
         keyExtractor={(listing) => listing.id.toString()} //keyExtractor expects a string as the unique identifier so a int must be converted to a string.
         renderItem={({ item }) => (
           <Card
-            onPress={() => navigation.navigate("ListingDetails", item)}
+            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
