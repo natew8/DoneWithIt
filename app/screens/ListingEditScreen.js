@@ -10,13 +10,13 @@ import {
   AppFormField,
   SubmitButton,
   AppFormPicker,
-} from "../components/Forms/index";
+} from "../components/Forms";
 import Screen from "../components/Screen";
 import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   images: Yup.array().min(1, "Please select at least one image."),
-  title: Yup.string().required().min(1).min(1).label("Title"),
+  title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
@@ -83,8 +83,10 @@ function ListingEditScreen() {
   const location = useLocation(); //Custom hook
 
   const handleSubmit = async (listing) => {
-    console.log(listing);
-    const result = await listingsApi.addListing({ ...listing, location });
+    const result = await listingsApi.addListing(
+      { ...listing, location },
+      (progress) => console.log(progress)
+    );
     if (!result.ok) return alert("Could not save listing, please try again.");
     alert("Success!");
   };
@@ -115,13 +117,13 @@ function ListingEditScreen() {
           PickerItemComponent={CategoryPickerItem}
           width="50%"
           items={categories}
-          name="Category"
+          name="category"
           placeholder="Category"
         />
         <AppFormField
           maxLength={255}
           multiline
-          name="Description"
+          name="description"
           numberOfLines={3}
           placeholder="Description"
         />
