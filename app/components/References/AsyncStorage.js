@@ -15,3 +15,9 @@ export default function App() {
   demo();
   return null;
 }
+
+//setItem returns a promise so it needs to be put in an async function.
+//setItem allows you to create an object with key value pairs.
+//setItem requires that your object be a string so you need to use JSON.stringify on the key value pairs.
+
+//getItem - when you get a certain item you need to parse the item back into an object.
