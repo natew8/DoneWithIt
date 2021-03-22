@@ -1,9 +1,18 @@
-import React from "react";
+//Libraries
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+//Custom Hooks
+import useAuth from "../auth/useAuth";
 //Components
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, SubmitButton } from "../components/Forms/index";
+import {
+  AppForm,
+  AppFormField,
+  ErrorMessage,
+  SubmitButton,
+} from "../components/Forms/index";
+import authApi from "../api/auth";
 //
 //
 //
@@ -15,11 +24,38 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterScreen(props) {
+  //State
+  const [registerFailed, setRegisterFailed] = useState(false);
+  const [error, setError] = useState("");
+  //Hooks
+  const { login } = useAuth();
+
+  const handleRegister = async (userInfo) => {
+    const result = await authApi.register(userInfo);
+    if (!result.ok) {
+      if (result.data) setError(result.data.error);
+      else {
+        MediaStreamErrorEvent("An unexpected error occurred");
+        console.log(result);
+      }
+      return;
+    }
+    const { data: authToken } = await authApi.login(
+      userInfo.email,
+      userInfo.password
+    );
+    login(authToken);
+  };
+
   return (
     <Screen style={styles.container}>
+      <ErrorMessage
+        visible={registerFailed}
+        error="An Account is already attached to this email"
+      />
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(value) => console.log(value)}
+        onSubmit={handleRegister}
         validationSchema={validationSchema}
       >
         <AppFormField
