@@ -33,7 +33,7 @@ const get = async (key) => {
     }
     return item.value;
   } catch (error) {
-    console.log(error);
+    console.log(error); //Eventually these will be replaced with the Logger import for Bugsnag//
   }
 };
 

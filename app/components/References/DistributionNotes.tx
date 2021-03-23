@@ -26,6 +26,35 @@ The more JS you have the more burdensome this process will be.
 
 Moment.js for example is very large. So make sure it is worth it. 
 
+4. Handling Errors
+  You should not log any errors to the console in production and distribution 
+You can use error reporting tools like 
+  - Sentry
+  - Bugsnag
+
+5. THEN WE PUBLISH and distribute
+When using Expo cli you can either: 
+  A. publish using expo (ONLY USE DURING DEVELOPMENT AND TESTING)
+          -or-
+  B. Or build stand alone binaries for iOS and Android. 
+
+Publishing is great during development and testing. and anyone can run the app using expo client. 
+
+To do this you run :
+    expo publish --release-channel staging 
+
+then you will be given a series of links that will take you to places you can access your app.
+
+Anyone with this link can view your application so if you want it to be private you need to change settings in the app.json file. 
+    A. You add a new key called "privacy"
+    B. this has a few options: 
+        "unlisted" (default setting) hides from search results. Only people with the link can access the app. 
+        "Public" Anyone can find and access your app. 
+        "Private" READ DOCUMENTATION FOR THIS ONE.
+
+
+
+
 
 
 
