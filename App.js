@@ -10,6 +10,7 @@ import navigationTheme from "./app/Navigation/navigationTheme";
 import OfflineNotification from "./app/components/OfflineNotification";
 import AuthContext from "./app/auth/context";
 import storage from "./app/auth/storage";
+import { navigationRef } from "./app/Navigation/RootNavigation";
 
 export default function App() {
   const netInfo = useNetInfo();
@@ -33,7 +34,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotification visible={netInfo.isInternetReachable} />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>
