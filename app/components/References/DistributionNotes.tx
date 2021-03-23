@@ -11,5 +11,23 @@ Things we need to do before you build and distribute your app .
       - Android Icon Design Guideline:
         https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive
 
+2. Optimize your assets
+You can optimize your images with sharp-cli 
+ - npm i -g sharp-cli
+ - run npx expo-optimize
+ this will compress and optimize your assets for better performance
+
+3. Optimize your Javascript bundle
+When an application is built all of the Javascript files get bundled into a single js file. 
+When the application starts this bundle has to be loaded into memory and parsed by the JS virtual machine on the mobile device. 
+The more JS you have the more burdensome this process will be. 
+
+!! Its always good practice to look through the libraries you are using in your application and find out if there is a more lightweight option !!
+
+Moment.js for example is very large. So make sure it is worth it. 
+
+
+
+
 
 
