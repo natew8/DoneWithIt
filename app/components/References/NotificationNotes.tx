@@ -12,3 +12,16 @@ Steps for enabling notifications in our application
 4. Handling received notifications
 
 
+Set Up in VScode: 
+expo install expo-notifications
+import * as Notifications from 'expo-notifications'
+
+Expo Push Notification tool: you can use this to test your notifications
+
+
+How expo notifications works: 
+1. user does something to trigger a notification
+2. my server sends a post request to Expo's server with the body of the notification and the expo notification token
+3. Depending on the device Expo's backend will send the request through either firebase cloud messaging (android) or APNS (iOS)
+4. then it is sent to the user
+

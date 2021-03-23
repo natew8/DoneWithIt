@@ -5,6 +5,7 @@ import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 //Components//
 import ListingEditScreen from "../screens/ListingEditScreen";
+import expoPushTokensApi from "../api/expoPushTokens";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
@@ -14,15 +15,18 @@ const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
   useEffect(() => {
     registerForPushNotifications();
+
+    Notifications.addNotificationResponseReceivedListener((notification) =>
+      console.log(notification)
+    );
   }, []);
 
   const registerForPushNotifications = async () => {
     try {
       const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       if (!permission.granted) return;
-
       const token = await Notifications.getExpoPushTokenAsync();
-      console.log(token);
+      expoPushTokensApi.register(token);
     } catch (error) {
       console.log("Error getting push token.", error);
     }
