@@ -11,8 +11,12 @@ Steps for enabling notifications in our application
    c. the server notifies the target user. 
 4. Handling received notifications
 
+two types of Notifications
+Remote(push notifications) -  sent from the expo server
+Local - sent from the app itself. 
 
-Set Up in VScode: 
+
+Set Up in VScode for remote notifications: 
 expo install expo-notifications
 import * as Notifications from 'expo-notifications'
 

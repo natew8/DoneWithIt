@@ -65,7 +65,7 @@ function RegisterScreen(props) {
             name="name"
             icon="account"
             autoCorrect={false}
-            keyBordType="default"
+            keyBoardType="default"
             placeholder="Name"
             textContentType="name"
           />

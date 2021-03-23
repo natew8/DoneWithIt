@@ -1,0 +1,15 @@
+Things we need to do before you build and distribute your app .
+1. Give it an icon
+   a. PNG
+   b. 1024 x 1024
+     - Exact!
+     - don't use round corners
+     - Expo will generate the other sizes for you
+   c. Follow apple/android Guidelines
+      - Apple Icon Design Guideline:
+        https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/
+      - Android Icon Design Guideline:
+        https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive
+
+
+
