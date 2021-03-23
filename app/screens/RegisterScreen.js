@@ -4,7 +4,9 @@ import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 //Custom Hooks
 import useAuth from "../auth/useAuth";
+import useApi from "../hooks/useApi";
 //Components
+import ActivityIndicator from "../components/ActivityIndicator";
 import Screen from "../components/Screen";
 import {
   AppForm,
@@ -28,10 +30,12 @@ function RegisterScreen(props) {
   const [registerFailed, setRegisterFailed] = useState(false);
   const [error, setError] = useState("");
   //Hooks
+  const registerApi = useApi(authApi.register);
+  const loginApi = useApi(authApi.login);
   const { login } = useAuth();
 
   const handleRegister = async (userInfo) => {
-    const result = await authApi.register(userInfo);
+    const result = await registerApi.request(userInfo);
     if (!result.ok) {
       if (result.data) setError(result.data.error);
       else {
@@ -40,7 +44,7 @@ function RegisterScreen(props) {
       }
       return;
     }
-    const { data: authToken } = await authApi.login(
+    const { data: authToken } = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
@@ -49,15 +53,12 @@ function RegisterScreen(props) {
 
   return (
     <Screen style={styles.container}>
-      <ErrorMessage
-        visible={registerFailed}
-        error="An Account is already attached to this email"
-      />
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={handleRegister}
         validationSchema={validationSchema}
       >
+        <ErrorMessage visible={registerFailed} error={error} />
         <AppFormField
           name="name"
           icon="account"
@@ -86,6 +87,7 @@ function RegisterScreen(props) {
           secureTextEntry
         />
         <SubmitButton title="register" />
+        <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
       </AppForm>
     </Screen>
   );
