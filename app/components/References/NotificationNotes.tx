@@ -1,0 +1,14 @@
+Architecture for Notifications
+
+Steps for enabling notifications in our application
+
+1. Register the app to get a token. This uniquely identifies every device. 
+2. Store this token somewhere on the server. 
+   a. We create a db user table that includes a pushNotificationToken (or something like)
+3. Send a notification
+   a. First we send the message to the server. 
+   b. store the message in the db.
+   c. the server notifies the target user. 
+4. Handling received notifications
+
+
