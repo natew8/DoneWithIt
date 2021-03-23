@@ -52,44 +52,46 @@ function RegisterScreen(props) {
   };
 
   return (
-    <Screen style={styles.container}>
-      <AppForm
-        initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={handleRegister}
-        validationSchema={validationSchema}
-      >
-        <ErrorMessage visible={registerFailed} error={error} />
-        <AppFormField
-          name="name"
-          icon="account"
-          autoCorrect={false}
-          keyBordType="default"
-          placeholder="Name"
-          textContentType="name"
-        />
-        <AppFormField
-          name="email"
-          icon="email"
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyBoardType="email-address"
-          placeholder="Email"
-          textContentType="emailAddress"
-        />
-        <AppFormField
-          name="password"
-          icon="lock"
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyBoardType="email-address"
-          placeholder="Password"
-          textContentType="password"
-          secureTextEntry
-        />
-        <SubmitButton title="register" />
-        <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
-      </AppForm>
-    </Screen>
+    <>
+      <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
+      <Screen style={styles.container}>
+        <AppForm
+          initialValues={{ name: "", email: "", password: "" }}
+          onSubmit={handleRegister}
+          validationSchema={validationSchema}
+        >
+          <ErrorMessage visible={registerFailed} error={error} />
+          <AppFormField
+            name="name"
+            icon="account"
+            autoCorrect={false}
+            keyBordType="default"
+            placeholder="Name"
+            textContentType="name"
+          />
+          <AppFormField
+            name="email"
+            icon="email"
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyBoardType="email-address"
+            placeholder="Email"
+            textContentType="emailAddress"
+          />
+          <AppFormField
+            name="password"
+            icon="lock"
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyBoardType="email-address"
+            placeholder="Password"
+            textContentType="password"
+            secureTextEntry
+          />
+          <SubmitButton title="register" />
+        </AppForm>
+      </Screen>
+    </>
   );
 }
 const styles = StyleSheet.create({
