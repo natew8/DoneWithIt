@@ -38,7 +38,9 @@ When using Expo cli you can either:
           -or-
   B. Or build stand alone binaries for iOS and Android. 
 
-Publishing is great during development and testing. and anyone can run the app using expo client. 
+EXPO PUBLISHING
+This is not used for actual production
+Publishing is great during development and testing. anyone with permission can run the app using expo client. 
 
 To do this you run :
     expo publish --release-channel staging 
@@ -51,6 +53,25 @@ Anyone with this link can view your application so if you want it to be private 
         "unlisted" (default setting) hides from search results. Only people with the link can access the app. 
         "Public" Anyone can find and access your app. 
         "Private" READ DOCUMENTATION FOR THIS ONE.
+
+
+BUILDING STAND ALONE binaries
+IOS APP
+  1. you have to enroll in the Apple Developers program
+this is $99 a year and requires proof of identity 
+  2. Go to app.json
+      a.     "ios": {
+      "supportsTablet": true, ---> This allows tablet support
+      "bundleIdentifier": "com.n8w8.donewithit", ---> this is the unique identifier the app store uses to id our application. convention is to use the reverse of our DNS (com.something.something) MAKE SURE NOT TO CHANGE THIS IN THE FUTURE OR THINGS WONT WORK.
+      "buildNumber": "1.0.0" ---> This is used internally in the app store. Every time we update and release we need to update this number.
+    },
+  3. run the following terminal command :  expo build:ios
+    a. follow the prompts and answer the questions
+  4. you can then monitor your build at the expo website
+  5. when finished you will be able to download your ipa file used to build the app.
+
+
+
 
 
 
